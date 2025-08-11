@@ -532,10 +532,9 @@ nextLocks[r][c] = true;
 
   return (
     <div className={cx("min-h-screen p-4 md:p-8 relative", pastel.bg)} onKeyDown={handleKeyDown} tabIndex={0}>
-{/* titolo a sinistra – controlli responsive */}
 {/* titolo a sinistra – controlli responsive (polletto fermo) */}
 <div className="mx-auto max-w-5xl mb-4 md:mb-6 flex items-center justify-between">
-  {/* Titolo + polletto (polletto NON si muove) */}
+  {/* Titolo + polletto (il polletto NON si muove) */}
   <div className="flex items-center gap-4">
     <h1 className="text-5xl font-bold text-emerald-900">Zenny Sudoku</h1>
 
@@ -543,7 +542,7 @@ nextLocks[r][c] = true;
     <div className="relative w-24 h-24">
       <img src="/chick.png" alt="Zenny" className="w-24 h-24" />
 
-      {/* MOBILE: icone in colonna, posizionate a SINISTRA del polletto */}
+      {/* MOBILE: icone in colonna, accanto al polletto (non spostano il pulcino) */}
       <div className="absolute -left-12 top-1 flex flex-col gap-2 sm:hidden">
         <button
           className="p-2 rounded-xl border border-emerald-300 bg-white/70 hover:bg-emerald-50"
@@ -563,22 +562,6 @@ nextLocks[r][c] = true;
         </button>
       </div>
     </div>
-  </div>
-
-  {/* DESKTOP/TABLET: bottoni a destra, affiancati come prima */}
-  <div className="hidden sm:flex items-center gap-2">
-    <button
-      className="p-2 rounded-xl border border-emerald-300 bg-white/70 hover:bg-emerald-50"
-      title={app.musicMuted ? "Riattiva suono" : "Disattiva suono"}
-      onClick={() => setApp((s: any) => ({ ...s, musicMuted: !s.musicMuted }))}
-    >
-      {app.musicMuted ? <VolumeX className="w-5 h-5 text-emerald-800" /> : <Volume2 className="w-5 h-5 text-emerald-800" />}
-    </button>
-    <Btn onClick={() => { setTutorialPage(0); setTutorialOpen(true); }}>
-      <BookOpen className="w-4 h-4" /> Tutorial
-    </Btn>
-  </div>
-</div>
   </div>
 
   {/* TABLET/DESKTOP: bottoni a destra, affiancati come prima */}
