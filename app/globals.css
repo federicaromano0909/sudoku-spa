@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Sfondo come nel mockup, morbido verde -> giallo */
+html, body {
+  height: 100%;
+}
+body {
+  @apply bg-gradient-to-br from-lime-50 via-emerald-50 to-amber-50 text-emerald-900;
+}
+
+/* Bordi arrotondati e ombre soft per pulsanti e card */
+.card-soft {
+  @apply rounded-2xl border border-emerald-200/60 bg-white/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)];
+}
+.btn-soft {
+  @apply h-10 px-3 rounded-xl border border-emerald-300 text-emerald-800 bg-white/70 hover:bg-emerald-50 transition;
+}
+
+/* Keypad “pill” appiccicato in basso su mobile */
+.keypad-wrap {
+  @apply fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-[min(680px,94vw)] px-2;
+}
+.keypad {
+  @apply grid grid-cols-9 gap-2 rounded-2xl p-2 bg-white/70 border border-emerald-200 shadow-md;
+}
+
+/* Dialog (popup) più “carino” */
+.modal-panel {
+  @apply relative bg-white rounded-2xl shadow-xl w-[92vw] max-w-md p-5 border border-emerald-200;
+}
