@@ -1052,11 +1052,17 @@ function NotesGrid({ notes }: { notes: Set<number> }) {
 
 function Keypad({ numberClick }: { numberClick: (n: number) => void }) {
   return (
-    <div className="grid grid-cols-9 gap-2">
+    // una riga sola; su mobile gap super stretto
+    <div className="grid grid-cols-9 gap-[2px] sm:gap-2">
       {Array.from({ length: 9 }).map((_, i) => (
         <button
           key={i}
-          className={cx("h-12 rounded-xl text-lg", pastel.keypad)}
+          // su mobile dimensioni in vw: si adatta allo schermo
+          // da sm in su torna fisso come prima
+          className={cx(
+            "rounded-xl min-w-0 h-[9.2vw] text-[4.2vw] sm:h-12 sm:text-lg",
+            pastel.keypad
+          )}
           onClick={() => numberClick(i + 1)}
           aria-label={`inserisci ${i + 1}`}
         >
