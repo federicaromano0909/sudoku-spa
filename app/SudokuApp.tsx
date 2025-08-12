@@ -881,59 +881,58 @@ function handleChangeDifficulty(e: React.ChangeEvent<HTMLSelectElement>) {
         </div>
       </Modal>
 
-      {/* popup tutorial */}
-      <Modal
-        open={tutorialOpen}
-        onClose={() => setTutorialOpen(false)}
-        title={tutorialPage === 0 ? "Come si fa un Sudoku" : "Come funziona Zenny Sudoku"}
-        showIcon={false}
-        actions={
-          <>
-            {tutorialPage > 0 && (
-              <Btn onClick={() => setTutorialPage((p) => p - 1)}>Indietro</Btn>
-            )}
-            {tutorialPage < 1 ? (
-              <Btn variant="primary" onClick={() => setTutorialPage((p) => p + 1)}>
-                Avanti
-              </Btn>
-            ) : (
-              <Btn variant="primary" onClick={() => setTutorialOpen(false)}>
-                Chiudi
-              </Btn>
-            )}
-          </>
-        }
-      >
-        <div className="relative pb-24">
-          {tutorialPage === 0 ? (
-            <div className="mt-3 space-y-2 text-zen-forest">
-              <p>Riempi la griglia 9×9 con i numeri da 1 a 9.</p>
-              <p>In ogni riga, colonna e riquadro 3×3, ogni numero può comparire una sola volta.</p>
-              <p>
-                Attiva i <b>Numerini</b> per segnare le possibilità (come una matita).
-              </p>
-            </div>
-          ) : (
-            <div className="mt-3 space-y-2 text-zen-forest">
-              <p>• Scegli la difficoltà e inizia.</p>
-              <p>• Usa la <b>Gomma</b> per cancellare un numero che hai messo.</p>
-              <p>• <b>Annulla</b> / <b>Ripeti</b> per correggere mosse.</p>
-              <p>• <b>{helpLabel}</b>: riempie una casella corretta casuale (3 per partita).</p>
-              <p>• <b>Ricomincia</b> azzera il puzzle attuale; <b>Rigenera</b> crea un nuovo Sudoku.</p>
-            </div>
-          )}
+{/* popup tutorial */}
+<Modal
+  open={tutorialOpen}
+  onClose={() => setTutorialOpen(false)}
+  title={tutorialPage === 0 ? "Come si fa un Sudoku" : "Come funziona Zenny Sudoku"}
+  showIcon={false}
+  actions={
+    <>
+      {tutorialPage > 0 && (
+        <Btn onClick={() => setTutorialPage((p) => p - 1)}>Indietro</Btn>
+      )}
+      {tutorialPage < 1 ? (
+        <Btn variant="primary" onClick={() => setTutorialPage((p) => p + 1)}>
+          Avanti
+        </Btn>
+      ) : (
+        <Btn variant="primary" onClick={() => setTutorialOpen(false)}>
+          Chiudi
+        </Btn>
+      )}
+    </>
+  }
+>
+  {/* Spazio sotto SOLO per mobile; desktop resta identico */}
+  <div className="pb-10 sm:pb-10">
+    {tutorialPage === 0 ? (
+      <div className="mt-3 space-y-2 text-zen-forest">
+        <p>Riempi la griglia 9×9 con i numeri da 1 a 9.</p>
+        <p>In ogni riga, colonna e riquadro 3×3, ogni numero può comparire una sola volta.</p>
+        <p>Attiva i <b>Numerini</b> per segnare le possibilità (come una matita).</p>
+      </div>
+    ) : (
+      <div className="mt-3 space-y-2 text-zen-forest">
+        <p>• Scegli la difficoltà e inizia.</p>
+        <p>• Usa la <b>Gomma</b> per cancellare un numero che hai messo.</p>
+        <p>• <b>Annulla</b> / <b>Ripeti</b> per correggere mosse.</p>
+        <p>• <b>{helpLabel}</b>: riempie una casella corretta casuale (3 per partita).</p>
+        <p>• <b>Ricomincia</b> azzera il puzzle attuale; <b>Rigenera</b> crea un nuovo Sudoku.</p>
+      </div>
+    )}
 
-          <div className="mt-3">
-            <Dots total={2} index={tutorialPage} />
-          </div>
+    <div className="mt-3">
+      <Dots total={2} index={tutorialPage} />
+    </div>
+  </div>
 
-          <img
-            src="/chick-tutorial.png"
-            alt="Polletto tutorial"
-className="absolute left-4 bottom-2 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none select-none"
-          />
-        </div>
-      </Modal>
+  {/* Il pulcino è assoluto rispetto al pannello del modal (che è relative) */}
+  <img
+    src="/chick-tutorial.png"
+    alt="Polletto tutorial"
+className="absolute left-4 bottom-5 sm:bottom-1 w-24 h-24 pointer-events-none select-none"  />
+</Modal>
     </main>
   );
 }
