@@ -904,7 +904,7 @@ function handleChangeDifficulty(e: React.ChangeEvent<HTMLSelectElement>) {
           </>
         }
       >
-        <div className="relative pb-10">
+        <div className="relative pb-24">
           {tutorialPage === 0 ? (
             <div className="mt-3 space-y-2 text-zen-forest">
               <p>Riempi la griglia 9×9 con i numeri da 1 a 9.</p>
@@ -930,7 +930,7 @@ function handleChangeDifficulty(e: React.ChangeEvent<HTMLSelectElement>) {
           <img
             src="/chick-tutorial.png"
             alt="Polletto tutorial"
-            className="absolute left-4 bottom-1 w-26 h-26 pointer-events-none select-none"
+className="absolute left-4 bottom-2 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none select-none"
           />
         </div>
       </Modal>
