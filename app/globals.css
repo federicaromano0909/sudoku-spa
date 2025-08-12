@@ -1,30 +1,46 @@
 @import "tailwindcss";
 
-/* Sfondo come nel mockup, morbido verde -> giallo */
-html, body {
-  height: 100%;
+/* Palette Tailwind v4 */
+@theme {
+  --color-zen-mint: #E9F5EC;
+  --color-zen-cream: #FFF6D6;
+  --color-zen-sage: #A8CBA7;
+  --color-zen-grid: #C7E2C1;
+  --color-zen-forest: #2F4F4F;
 }
+
+html, body { height: 100%; }
+
+/* Gradiente e testo globali */
 body {
-  @apply bg-gradient-to-br from-lime-50 via-emerald-50 to-amber-50 text-emerald-900;
+  @apply min-h-svh antialiased bg-gradient-to-br from-zen-mint to-zen-cream text-zen-forest;
 }
 
-/* Bordi arrotondati e ombre soft per pulsanti e card */
+/* ---------- Utility di progetto (pronte da riusare) ---------- */
+.container-soft { @apply max-w-5xl mx-auto px-4; }
+
 .card-soft {
-  @apply rounded-2xl border border-emerald-200/60 bg-white/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)];
+  @apply rounded-2xl border border-zen-sage/40 bg-white/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)];
 }
+
 .btn-soft {
-  @apply h-10 px-3 rounded-xl border border-emerald-300 text-emerald-800 bg-white/70 hover:bg-emerald-50 transition;
+  @apply inline-flex items-center gap-2 rounded-2xl px-5 py-3 font-semibold
+         border border-zen-sage/50 shadow-sm bg-white/70 hover:bg-white/90 backdrop-blur
+         transition;
 }
 
-/* Keypad “pill” appiccicato in basso su mobile */
-.keypad-wrap {
-  @apply fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-[min(680px,94vw)] px-2;
-}
-.keypad {
-  @apply grid grid-cols-9 gap-2 rounded-2xl p-2 bg-white/70 border border-emerald-200 shadow-md;
+.btn-primary {
+  @apply bg-zen-sage text-zen-forest hover:brightness-95;
 }
 
-/* Dialog (popup) più “carino” */
-.modal-panel {
-  @apply relative bg-white rounded-2xl shadow-xl w-[92vw] max-w-md p-5 border border-emerald-200;
+/* Griglia decorativa di sfondo (leggera) */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(to right, var(--color-zen-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-zen-grid) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
