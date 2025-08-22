@@ -1017,7 +1017,8 @@ function Cell({
     <button
       onClick={onSelect}
       className={cx(
-        "relative flex items-center justify-center bg-white text-xl md:text-2xl font-semibold select-none transition-colors focus:outline-none",
+        // aggiunto overflow-hidden
+        "relative flex items-center justify-center bg-white text-xl md:text-2xl font-semibold select-none transition-colors focus:outline-none overflow-hidden",
         selected && pastel.selected,
         conflict && pastel.conflict
       )}
@@ -1037,11 +1038,24 @@ function Cell({
 
 function NotesGrid({ notes }: { notes: Set<number> }) {
   return (
-    <div className="grid grid-cols-3 gap-0.5 w-full h-full p-1">
+    <div
+      className="
+        grid grid-cols-3 grid-rows-3
+        gap-[1px]
+        w-full h-full min-w-0 min-h-0
+        p-[2px] sm:p-1
+      "
+    >
       {Array.from({ length: 9 }).map((_, i) => (
         <div
           key={i}
-          className="text-[10px] md:text-xs leading-none text-zen-forest/70 flex items-center justify-center"
+          className="
+            flex items-center justify-center
+            text-[9px] md:text-xs
+            leading-none
+            text-zen-forest/70
+            min-w-0 min-h-0
+          "
         >
           {notes.has(i + 1) ? i + 1 : ""}
         </div>
